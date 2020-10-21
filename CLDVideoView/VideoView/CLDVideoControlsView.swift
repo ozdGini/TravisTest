@@ -33,16 +33,21 @@ class CLDVideoControlsView: UIControl {
     
     private(set) var playPauseButton: UIButton!
     private(set) var disappearTimer : CLDDisplayLinkObserver!
+    private      var isPlaying      : Bool
+    
     weak         var delegate       : CLDVideoControlsViewDelegate?
     
     init(frame: CGRect, delegate: CLDVideoControlsViewDelegate?) {
+        self.isPlaying = true
+        self.delegate = delegate
         super.init(frame: frame)
         
         addTarget(self, action: #selector(backgroundPressed), for: .touchUpInside)
+        createUI()
     }
     
     @objc private func backgroundPressed() {
-           toggleControlsVisibility()
+          // toggleControlsVisibility()
     }
        
     required init?(coder: NSCoder) {
@@ -64,30 +69,28 @@ class CLDVideoControlsView: UIControl {
         
     }
     
-    @objc private func playPressed() {
-        delegate?.playPressedOnVideoControls(self)
-    }
-    
-    @objc private func pausePressed() {
-        delegate?.pausePressedOnVideoControls(self)
-    }
-    
-    /*
-    func prepareControllersView() {
+    @objc func togglePlayPressed() {
         
-        // intial controllers view
-        addTarget(self, action: #selector(toggleVideoBackgroundPressed), for: .touchUpInside)
-        videoContainerView.addSubview(videoControlsView)
-        cld_addConstraintsToFill(videoContainerView)
-        videoContainerView.bringSubviewToFront(videoControlsView)
-
+        if isPlaying {
+            delegate?.pausePressedOnVideoControls(self)
+            playPauseButton.setTitle("▶", for: .normal)
+        }
+        else {
+            delegate?.playPressedOnVideoControls(self)
+            playPauseButton.setTitle("⏸", for: .normal)
+        }
+        
+        isPlaying.toggle()
+    }
+        
+    func createUI() {
+                
         // initial play button
-        playButton = UIButton(type: .custom)
-        playButton.setTitle("⏸", for: .normal)
-        playButton.addTarget(self, action: #selector(togglePlayPressed), for: .touchUpInside)
-        playButton.titleLabel?.font = playButton.titleLabel?.font.withSize(40)
-        addSubview(playButton)
-        playButton.cld_addConstraintsToCenter(videoControlsView)
-    }*/
-
+        playPauseButton = UIButton(type: .custom)
+        playPauseButton.setTitle("⏸", for: .normal)
+        playPauseButton.addTarget(self, action: #selector(togglePlayPressed), for: .touchUpInside)
+        playPauseButton.titleLabel?.font = playPauseButton.titleLabel?.font.withSize(40)
+        addSubview(playPauseButton)
+        playPauseButton.cld_addConstraintsToCenter(self)
+    }
 }

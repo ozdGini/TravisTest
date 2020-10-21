@@ -41,7 +41,7 @@ class CLDVideoView: UIView {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    func playerUpdatedVideo(item: AVPlayerItem) {
+    func replaceVideo(to item: AVPlayerItem) {
         player.replaceCurrentItem(with: item)
     }
     
