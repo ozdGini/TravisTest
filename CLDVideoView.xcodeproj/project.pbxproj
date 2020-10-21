@@ -13,6 +13,12 @@
 		D72D83202540348800C6D74C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72D831E2540348800C6D74C /* Main.storyboard */; };
 		D72D83222540348900C6D74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D72D83212540348900C6D74C /* Assets.xcassets */; };
 		D72D83252540348900C6D74C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72D83232540348900C6D74C /* LaunchScreen.storyboard */; };
+		D72D832D254034E200C6D74C /* CLDVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D832C254034E200C6D74C /* CLDVideoView.swift */; };
+		D72D832F2540360100C6D74C /* CLDVideoControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D832E2540360100C6D74C /* CLDVideoControlsView.swift */; };
+		D72D8331254038F400C6D74C /* CLDVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D8330254038F400C6D74C /* CLDVideoPlayerView.swift */; };
+		D72D8337254059CB00C6D74C /* ScreenRecording.mov in Resources */ = {isa = PBXBuildFile; fileRef = D72D8335254059CB00C6D74C /* ScreenRecording.mov */; };
+		D72D8338254059CB00C6D74C /* ScreenRecording2.mov in Resources */ = {isa = PBXBuildFile; fileRef = D72D8336254059CB00C6D74C /* ScreenRecording2.mov */; };
+		D72D833A25405BE700C6D74C /* CLDDisplayLinkObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		D72D83212540348900C6D74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D72D83242540348900C6D74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D72D83262540348900C6D74C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D72D832C254034E200C6D74C /* CLDVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoView.swift; sourceTree = "<group>"; };
+		D72D832E2540360100C6D74C /* CLDVideoControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoControlsView.swift; sourceTree = "<group>"; };
+		D72D8330254038F400C6D74C /* CLDVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoPlayerView.swift; sourceTree = "<group>"; };
+		D72D8335254059CB00C6D74C /* ScreenRecording.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ScreenRecording.mov; sourceTree = "<group>"; };
+		D72D8336254059CB00C6D74C /* ScreenRecording2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ScreenRecording2.mov; sourceTree = "<group>"; };
+		D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLDDisplayLinkObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +71,26 @@
 				D72D83182540348800C6D74C /* AppDelegate.swift */,
 				D72D831A2540348800C6D74C /* SceneDelegate.swift */,
 				D72D831C2540348800C6D74C /* ViewController.swift */,
+				D72D8332254038FA00C6D74C /* VideoView */,
 				D72D831E2540348800C6D74C /* Main.storyboard */,
 				D72D83212540348900C6D74C /* Assets.xcassets */,
 				D72D83232540348900C6D74C /* LaunchScreen.storyboard */,
 				D72D83262540348900C6D74C /* Info.plist */,
 			);
 			path = CLDVideoView;
+			sourceTree = "<group>";
+		};
+		D72D8332254038FA00C6D74C /* VideoView */ = {
+			isa = PBXGroup;
+			children = (
+				D72D832C254034E200C6D74C /* CLDVideoView.swift */,
+				D72D832E2540360100C6D74C /* CLDVideoControlsView.swift */,
+				D72D8330254038F400C6D74C /* CLDVideoPlayerView.swift */,
+				D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */,
+				D72D8335254059CB00C6D74C /* ScreenRecording.mov */,
+				D72D8336254059CB00C6D74C /* ScreenRecording2.mov */,
+			);
+			path = VideoView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +151,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72D8337254059CB00C6D74C /* ScreenRecording.mov in Resources */,
 				D72D83252540348900C6D74C /* LaunchScreen.storyboard in Resources */,
 				D72D83222540348900C6D74C /* Assets.xcassets in Resources */,
+				D72D8338254059CB00C6D74C /* ScreenRecording2.mov in Resources */,
 				D72D83202540348800C6D74C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +168,10 @@
 			files = (
 				D72D831D2540348800C6D74C /* ViewController.swift in Sources */,
 				D72D83192540348800C6D74C /* AppDelegate.swift in Sources */,
+				D72D833A25405BE700C6D74C /* CLDDisplayLinkObserver.swift in Sources */,
+				D72D832F2540360100C6D74C /* CLDVideoControlsView.swift in Sources */,
+				D72D8331254038F400C6D74C /* CLDVideoPlayerView.swift in Sources */,
+				D72D832D254034E200C6D74C /* CLDVideoView.swift in Sources */,
 				D72D831B2540348800C6D74C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
