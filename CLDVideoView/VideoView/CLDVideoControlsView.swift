@@ -39,6 +39,7 @@ class CLDVideoControlsView: UIControl {
     
     let transparentBackgroundColor = UIColor.black.withAlphaComponent(0.5)
     
+    // MARK: - init
     init(frame: CGRect, delegate: CLDVideoControlsViewDelegate?) {
         self.isPlaying = true
         self.isShown   = true
@@ -50,24 +51,45 @@ class CLDVideoControlsView: UIControl {
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+}
+
+// MARK: - user interaction events
+extension CLDVideoControlsView {
     
-    // MARK: - handle touch
     @objc private func backgroundPressed() {
-        toggleControlsVisibility()
-    }
-   
-    private func toggleControlsVisibility() {
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            
-            // we dont set the background alphe to 0 in order to keep getting touch events
-            self.backgroundColor       = self.isShown ? UIColor.clear : self.transparentBackgroundColor
-            self.playPauseButton.alpha = self.isShown ? 0.0 : 1.0
-            
-        }) { _ in
-            self.isShown.toggle()
-        }
-    }
+         toggleControlsVisibility()
+     }
+    
+     private func toggleControlsVisibility() {
+         
+         UIView.animate(withDuration: 0.2, animations: {
+             
+             // we dont set the background alphe to 0 in order to keep getting touch events
+             self.backgroundColor       = self.isShown ? UIColor.clear : self.transparentBackgroundColor
+             self.playPauseButton.alpha = self.isShown ? 0.0 : 1.0
+             
+         }) { _ in
+             self.isShown.toggle()
+         }
+     }
+     
+     @objc func togglePlayPressed() {
+         
+         if isPlaying {
+             delegate?.pausePressedOnVideoControls(self)
+             playPauseButton.setTitle("▶", for: .normal)
+         }
+         else {
+             delegate?.playPressedOnVideoControls(self)
+             playPauseButton.setTitle("⏸", for: .normal)
+         }
+         
+         isPlaying.toggle()
+     }
+}
+
+// MARK: - timer
+extension CLDVideoControlsView {
     
     private func startTimer() {
         
@@ -76,21 +98,11 @@ class CLDVideoControlsView: UIControl {
     @objc private func timerTicks() {
         
     }
+}
+
+// MARK: - create UI
+extension CLDVideoControlsView {
     
-    @objc func togglePlayPressed() {
-        
-        if isPlaying {
-            delegate?.pausePressedOnVideoControls(self)
-            playPauseButton.setTitle("▶", for: .normal)
-        }
-        else {
-            delegate?.playPressedOnVideoControls(self)
-            playPauseButton.setTitle("⏸", for: .normal)
-        }
-        
-        isPlaying.toggle()
-    }
-        
     func createUI() {
         
         backgroundColor = transparentBackgroundColor

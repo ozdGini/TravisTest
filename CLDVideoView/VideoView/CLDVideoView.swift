@@ -41,7 +41,7 @@ class CLDVideoView: UIView {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    // public methods
+    // MARK: - public methods
     func playVideo() {
         player.play()
     }
@@ -51,6 +51,22 @@ class CLDVideoView: UIView {
     func replaceVideo(to item: AVPlayerItem) {
         player.replaceCurrentItem(with: item)
     }
+}
+
+// MARK: - CLDVideoControlsViewDelegate
+extension CLDVideoView: CLDVideoControlsViewDelegate {
+    
+    func playPressedOnVideoControls(_ videoControls: CLDVideoControlsView) {
+        player.play()
+    }
+    
+    func pausePressedOnVideoControls(_ videoControls: CLDVideoControlsView) {
+        player.pause()
+    }
+}
+
+// MARK: - create UI
+extension CLDVideoView {
     
     private func createUI() {
         
@@ -66,16 +82,5 @@ class CLDVideoView: UIView {
         guard let playerLayer = videoPlayerView.playerLayer else { return }
         playerLayer.player = player
         player.play()
-    }
-}
-
-extension CLDVideoView: CLDVideoControlsViewDelegate {
-    
-    func playPressedOnVideoControls(_ videoControls: CLDVideoControlsView) {
-        player.play()
-    }
-    
-    func pausePressedOnVideoControls(_ videoControls: CLDVideoControlsView) {
-        player.pause()
     }
 }
