@@ -18,12 +18,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let bundle = Bundle(for: Self.self)
-        let url    = bundle.url(forResource: "ScreenRecording", withExtension: "mov")!
+        let url    = bundle.url(forResource: "dog", withExtension: "mov")!
         let video  = AVPlayerItem(url:url)
-        player = AVPlayer(playerItem: video)
+        player     = AVPlayer(playerItem: video)
+        
         player.isMuted = true
         
-        videoView = CLDVideoView(frame: CGRect(x: 0, y: 0, width: 200, height: 200), player: player)
+        videoView = CLDVideoView(frame: CGRect(x: 0, y: 150, width: view.frame.width, height: 400), player: player)
         view.addSubview(videoView)
     }
 }

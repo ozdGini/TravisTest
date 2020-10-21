@@ -41,6 +41,13 @@ class CLDVideoView: UIView {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
+    // public methods
+    func playVideo() {
+        player.play()
+    }
+    func pauseVideo() {
+        player.pause()
+    }
     func replaceVideo(to item: AVPlayerItem) {
         player.replaceCurrentItem(with: item)
     }
@@ -48,10 +55,7 @@ class CLDVideoView: UIView {
     private func createUI() {
         
         videoControlsView = CLDVideoControlsView(frame: frame, delegate: self)
-        videoControlsView.backgroundColor = .green
-        videoControlsView.alpha = 0.3
         videoPlayerView   = CLDVideoPlayerView(frame: frame)
-        videoPlayerView.backgroundColor = .red
         
         addSubview(videoPlayerView)
         addSubview(videoControlsView)

@@ -20,6 +20,7 @@
 		D72D8338254059CB00C6D74C /* ScreenRecording2.mov in Resources */ = {isa = PBXBuildFile; fileRef = D72D8336254059CB00C6D74C /* ScreenRecording2.mov */; };
 		D72D833A25405BE700C6D74C /* CLDDisplayLinkObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */; };
 		D7FDF58F254072B400A43A29 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDF58E254072B400A43A29 /* ExtensionUIView.swift */; };
+		D7FDF59125407F3700A43A29 /* dog.mov in Resources */ = {isa = PBXBuildFile; fileRef = D7FDF59025407F3700A43A29 /* dog.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		D72D8336254059CB00C6D74C /* ScreenRecording2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ScreenRecording2.mov; sourceTree = "<group>"; };
 		D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLDDisplayLinkObserver.swift; sourceTree = "<group>"; };
 		D7FDF58E254072B400A43A29 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
+		D7FDF59025407F3700A43A29 /* dog.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = dog.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */,
 				D72D8335254059CB00C6D74C /* ScreenRecording.mov */,
 				D72D8336254059CB00C6D74C /* ScreenRecording2.mov */,
+				D7FDF59025407F3700A43A29 /* dog.mov */,
 			);
 			path = VideoView;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				D72D8337254059CB00C6D74C /* ScreenRecording.mov in Resources */,
 				D72D83252540348900C6D74C /* LaunchScreen.storyboard in Resources */,
 				D72D83222540348900C6D74C /* Assets.xcassets in Resources */,
+				D7FDF59125407F3700A43A29 /* dog.mov in Resources */,
 				D72D8338254059CB00C6D74C /* ScreenRecording2.mov in Resources */,
 				D72D83202540348800C6D74C /* Main.storyboard in Resources */,
 			);

@@ -84,8 +84,9 @@ class CLDVideoControlsView: UIControl {
     }
         
     func createUI() {
-                
-        // initial play button
+        
+        backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        
         playPauseButton = UIButton(type: .custom)
         playPauseButton.setTitle("⏸", for: .normal)
         playPauseButton.addTarget(self, action: #selector(togglePlayPressed), for: .touchUpInside)
