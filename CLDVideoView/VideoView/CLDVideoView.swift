@@ -55,7 +55,7 @@ class CLDVideoView: UIView {
     private func createUI() {
         
         videoControlsView = CLDVideoControlsView(frame: frame, delegate: self)
-        videoPlayerView   = CLDVideoPlayerView(frame: frame)
+        videoPlayerView   = CLDVideoPlayerView  (frame: frame)
         
         addSubview(videoPlayerView)
         addSubview(videoControlsView)

@@ -34,30 +34,38 @@ class CLDVideoControlsView: UIControl {
     private(set) var playPauseButton: UIButton!
     private(set) var disappearTimer : CLDDisplayLinkObserver!
     private      var isPlaying      : Bool
-    
+    private      var isShown        : Bool
     weak         var delegate       : CLDVideoControlsViewDelegate?
+    
+    let transparentBackgroundColor = UIColor.black.withAlphaComponent(0.5)
     
     init(frame: CGRect, delegate: CLDVideoControlsViewDelegate?) {
         self.isPlaying = true
-        self.delegate = delegate
+        self.isShown   = true
+        self.delegate  = delegate
         super.init(frame: frame)
         
         addTarget(self, action: #selector(backgroundPressed), for: .touchUpInside)
         createUI()
     }
     
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    // MARK: - handle touch
     @objc private func backgroundPressed() {
-          // toggleControlsVisibility()
-    }
-       
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        toggleControlsVisibility()
     }
    
     private func toggleControlsVisibility() {
         
-        UIView.animate(withDuration: 0.5) {
-            self.alpha = 0
+        UIView.animate(withDuration: 0.2, animations: {
+            
+            // we dont set the background alphe to 0 in order to keep getting touch events
+            self.backgroundColor       = self.isShown ? UIColor.clear : self.transparentBackgroundColor
+            self.playPauseButton.alpha = self.isShown ? 0.0 : 1.0
+            
+        }) { _ in
+            self.isShown.toggle()
         }
     }
     
@@ -85,7 +93,7 @@ class CLDVideoControlsView: UIControl {
         
     func createUI() {
         
-        backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        backgroundColor = transparentBackgroundColor
         
         playPauseButton = UIButton(type: .custom)
         playPauseButton.setTitle("⏸", for: .normal)
