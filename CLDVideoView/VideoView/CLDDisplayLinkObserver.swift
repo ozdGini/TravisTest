@@ -24,23 +24,22 @@
 
 import UIKit
 
-public protocol CLDDisplayLinkObserverDelegate: class
-{
-    func didHandelTickWithDisplayLinkObserver(_ linkObserver: CLDDisplayLinkObserver)
+public protocol CLDDisplayLinkObserverDelegate: class {
+    func displayLinkObserverDidTick(_ linkObserver: CLDDisplayLinkObserver)
 }
 
-open class CLDDisplayLinkObserver: NSObject
-{
+open class CLDDisplayLinkObserver: NSObject {
+    
     public private(set) var tickerTimestamp   : CFTimeInterval
     public private(set) var displayLinkTicker : CADisplayLink?
     
-    public var delayValue : Double
+    public var delayValue   : Double
     
     public weak var delegate: CLDDisplayLinkObserverDelegate?
     
     // MARK: - Init
-    public init(delegate : CLDDisplayLinkObserverDelegate?)
-    {
+    public init(delegate : CLDDisplayLinkObserverDelegate?) {
+        
         self.delayValue        = 0.0
         self.tickerTimestamp   = CFTimeInterval(0.0)
         self.displayLinkTicker = nil
@@ -49,27 +48,26 @@ open class CLDDisplayLinkObserver: NSObject
     }
     
     // MARK: - Object LifeCycle
-    deinit
-    {
+    deinit {
         stopTicker()
     }
 
-    //MARK: - Selector
-    @objc fileprivate func updateTicker(with displayLink: CADisplayLink)
-    {
+    // MARK: - Selector
+    @objc fileprivate func updateTicker(with displayLink: CADisplayLink) {
+        
         guard tickerTimestamp != 0.0 else { tickerTimestamp = displayLink.timestamp ; return }
         let delta = displayLink.timestamp - tickerTimestamp
         guard delta >= delayValue else { return }
-        delegate?.didHandelTickWithDisplayLinkObserver(self)
+        delegate?.displayLinkObserverDidTick(self)
         tickerTimestamp = displayLink.timestamp
     }
 }
 
 // MARK: - Public methods
-extension CLDDisplayLinkObserver
-{
-    public func startTicker()
-    {
+extension CLDDisplayLinkObserver {
+    
+    public func startTicker() {
+        
         guard  displayLinkTicker == nil else { return }
         let displayLink = CADisplayLink(target: self, selector: #selector(updateTicker(with:)))
         displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
@@ -77,8 +75,8 @@ extension CLDDisplayLinkObserver
         displayLinkTicker = displayLink
     }
     
-    public func stopTicker()
-    {
+    public func stopTicker() {
+        
         displayLinkTicker?.remove(from: RunLoop.main, forMode: RunLoop.Mode.common)
         displayLinkTicker?.remove(from: RunLoop.main, forMode: RunLoop.Mode.tracking)
         displayLinkTicker?.invalidate()
@@ -86,8 +84,7 @@ extension CLDDisplayLinkObserver
         tickerTimestamp = 0.0
     }
     
-    public func isValid() -> Bool
-    {
+    public func isValid() -> Bool {
         return displayLinkTicker != nil
     }
 }

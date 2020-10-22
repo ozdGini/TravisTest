@@ -81,6 +81,13 @@ extension CLDVideoView {
         
         guard let playerLayer = videoPlayerView.playerLayer else { return }
         playerLayer.player = player
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(videoEnded), name: .AVPlayerItemDidPlayToEndTime, object: nil)
         player.play()
+    }
+    
+    @objc func videoEnded() {
+        player.seek(to: CMTime.zero)
+        videoControlsView.videoEnded()
     }
 }

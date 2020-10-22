@@ -31,72 +31,105 @@ protocol CLDVideoControlsViewDelegate: class {
 
 class CLDVideoControlsView: UIControl {
     
-    private(set) var playPauseButton: UIButton!
-    private(set) var disappearTimer : CLDDisplayLinkObserver!
-    private      var isPlaying      : Bool
-    private      var isShown        : Bool
-    weak         var delegate       : CLDVideoControlsViewDelegate?
+    private(set) var playPauseButton : UIButton!
+    private(set) var visibilityTimer : CLDDisplayLinkObserver!
+    private      var isPlaying       : Bool
+    private      var isShown         : Bool
+    weak         var delegate        : CLDVideoControlsViewDelegate?
     
     let transparentBackgroundColor = UIColor.black.withAlphaComponent(0.5)
     
     // MARK: - init
     init(frame: CGRect, delegate: CLDVideoControlsViewDelegate?) {
+        
         self.isPlaying = true
         self.isShown   = true
         self.delegate  = delegate
         super.init(frame: frame)
         
+        visibilityTimer = CLDDisplayLinkObserver(delegate: self)
+        
         addTarget(self, action: #selector(backgroundPressed), for: .touchUpInside)
+        
         createUI()
+        
+        startTimer()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 }
 
-// MARK: - user interaction events
+// MARK: - handle events
 extension CLDVideoControlsView {
     
-    @objc private func backgroundPressed() {
-         toggleControlsVisibility()
-     }
-    
-     private func toggleControlsVisibility() {
-         
-         UIView.animate(withDuration: 0.2, animations: {
-             
-             // we dont set the background alphe to 0 in order to keep getting touch events
-             self.backgroundColor       = self.isShown ? UIColor.clear : self.transparentBackgroundColor
-             self.playPauseButton.alpha = self.isShown ? 0.0 : 1.0
-             
-         }) { _ in
-             self.isShown.toggle()
-         }
-     }
-     
-     @objc func togglePlayPressed() {
-         
-         if isPlaying {
-             delegate?.pausePressedOnVideoControls(self)
-             playPauseButton.setTitle("▶", for: .normal)
-         }
-         else {
-             delegate?.playPressedOnVideoControls(self)
-             playPauseButton.setTitle("⏸", for: .normal)
-         }
-         
-         isPlaying.toggle()
-     }
-}
-
-// MARK: - timer
-extension CLDVideoControlsView {
-    
-    private func startTimer() {
+    func videoEnded() {
+        isShown = false
+        toggleControlsVisibility()
         
+        changeToPauseState()
     }
     
-    @objc private func timerTicks() {
+    @objc private func backgroundPressed() {
+        toggleControlsVisibility()
+    }
+    
+    private func toggleControlsVisibility() {
         
+        UIView.animate(withDuration: 0.2, animations: {
+            
+            // we dont set the background alphe to 0 in order to keep getting touch events
+            self.backgroundColor       = self.isShown ? UIColor.clear : self.transparentBackgroundColor
+            self.playPauseButton.alpha = self.isShown ? 0.0 : 1.0
+            
+        }) { _ in
+            self.isShown.toggle()
+            
+            if self.isShown,
+               self.isPlaying {
+                self.startTimer()
+            } else {
+                self.stopTimer()
+            }
+        }
+    }
+    
+    @objc func playPausePressed() {
+        
+        isPlaying ? changeToPauseState() : changeToPlayingState()
+    }
+    
+    func changeToPauseState() {
+        
+        delegate?.pausePressedOnVideoControls(self)
+        playPauseButton.setTitle("▶", for: .normal)
+        stopTimer()
+        isPlaying = false
+    }
+    
+    func changeToPlayingState() {
+        
+        delegate?.playPressedOnVideoControls(self)
+        playPauseButton.setTitle("||", for: .normal)
+        startTimer()
+        isPlaying = true
+    }
+}
+
+// MARK: - display link timer
+extension CLDVideoControlsView: CLDDisplayLinkObserverDelegate {
+    
+    private func startTimer() {
+        visibilityTimer.delayValue = 2
+        visibilityTimer.startTicker()
+    }
+    
+    private func stopTimer() {
+        visibilityTimer.stopTicker()
+    }
+    
+    func displayLinkObserverDidTick(_ linkObserver: CLDDisplayLinkObserver) {
+        toggleControlsVisibility()
+        visibilityTimer.stopTicker()
     }
 }
 
@@ -108,8 +141,8 @@ extension CLDVideoControlsView {
         backgroundColor = transparentBackgroundColor
         
         playPauseButton = UIButton(type: .custom)
-        playPauseButton.setTitle("⏸", for: .normal)
-        playPauseButton.addTarget(self, action: #selector(togglePlayPressed), for: .touchUpInside)
+        playPauseButton.setTitle("||", for: .normal)
+        playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
         playPauseButton.titleLabel?.font = playPauseButton.titleLabel?.font.withSize(40)
         addSubview(playPauseButton)
         playPauseButton.cld_addConstraintsToCenter(self)
