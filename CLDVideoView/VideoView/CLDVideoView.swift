@@ -40,17 +40,6 @@ class CLDVideoView: UIView {
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
-    // MARK: - public methods
-    func playVideo() {
-        player.play()
-    }
-    func pauseVideo() {
-        player.pause()
-    }
-    func replaceVideo(to item: AVPlayerItem) {
-        player.replaceCurrentItem(with: item)
-    }
 }
 
 // MARK: - CLDVideoControlsViewDelegate
