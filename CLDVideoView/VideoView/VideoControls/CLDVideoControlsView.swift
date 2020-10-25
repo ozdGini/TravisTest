@@ -105,6 +105,7 @@ extension CLDVideoControlsView {
 extension CLDVideoControlsView: CLDDisplayLinkObserverDelegate {
     
     func startTimer() {
+        visibilityTimer.stopTicker()
         visibilityTimer.delayValue = 2
         visibilityTimer.startTicker()
     }

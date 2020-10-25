@@ -18,7 +18,7 @@ class CLDVideoShownAndPausedState: NSObject, CLDVideoControlsState {
     }
     
     func playPausePressed() {
-        
+        print("CLDVideoShownAndPausedState - playPausePressed")
         controlsView.delegate?.playPressedOnVideoControls(controlsView)
         controlsView.playPauseButton.setTitle("||", for: .normal)
         controlsView.startTimer()
@@ -26,15 +26,13 @@ class CLDVideoShownAndPausedState: NSObject, CLDVideoControlsState {
     }
     
     func backgroundPressed() {
+        print("CLDVideoShownAndPausedState - backgroundPressed")
+        
+        self.controlsView.setNewState(newState: self.controlsView.hiddenAndPausedState)
         
         UIView.animate(withDuration: 0.2, animations: {
-            
             self.controlsView.hideControls()
-            
-        }) { _ in
-            
-            self.controlsView.setNewState(newState: self.controlsView.hiddenAndPausedState)
-        }
+        })
     }
     
     func timerFinished() {

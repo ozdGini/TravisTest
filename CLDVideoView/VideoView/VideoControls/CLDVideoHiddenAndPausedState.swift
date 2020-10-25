@@ -22,16 +22,14 @@ class CLDVideoHiddenAndPausedState: NSObject, CLDVideoControlsState {
     }
     
     func backgroundPressed() {
+        print("CLDVideoHiddenAndPausedState - backgroundPressed")
+
+        self.controlsView.setNewState(newState: self.controlsView.shownAndPausedState)
+        self.controlsView.stopTimer()
         
         UIView.animate(withDuration: 0.2, animations: {
-            
             self.controlsView.showControls()
-            
-        }) { _ in
-            
-            self.controlsView.setNewState(newState: self.controlsView.shownAndPausedState)
-            self.controlsView.stopTimer()
-        }
+        })
     }
     
     func timerFinished() {
