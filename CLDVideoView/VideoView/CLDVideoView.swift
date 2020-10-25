@@ -75,7 +75,7 @@ extension CLDVideoView {
         player.play()
     }
     
-    @objc func videoEnded() {
+    @objc private func videoEnded() {
         player.seek(to: CMTime.zero)
         videoControlsView.videoEnded()
     }

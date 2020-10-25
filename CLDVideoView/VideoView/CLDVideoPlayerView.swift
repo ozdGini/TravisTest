@@ -27,11 +27,11 @@ import AVKit
 
 class CLDVideoPlayerView: UIView {
 
-    override internal class var layerClass: AnyClass {
+    override class var layerClass: AnyClass {
         return AVPlayerLayer.self
     }
     
-    internal var player : AVPlayer? {
+    var player : AVPlayer? {
         get {
             return playerLayer?.player
         }
@@ -40,7 +40,7 @@ class CLDVideoPlayerView: UIView {
         }
     }
     
-    internal var fillMode : AVLayerVideoGravity? {
+    var fillMode : AVLayerVideoGravity? {
         get {
             return playerLayer?.videoGravity
         }
@@ -50,7 +50,7 @@ class CLDVideoPlayerView: UIView {
         }
     }
     
-    internal weak var playerLayer : AVPlayerLayer? {
+    weak var playerLayer : AVPlayerLayer? {
         guard let layer = layer as? AVPlayerLayer else { return nil }
         return layer as AVPlayerLayer
     }

@@ -31,13 +31,13 @@ protocol CLDVideoControlsViewDelegate: class {
 
 class CLDVideoControlsView: UIControl {
     
-    private(set) var playPauseButton : UIButton!
-    private(set) var visibilityTimer : CLDDisplayLinkObserver!
-    private      var isPlaying       : Bool
-    private      var isShown         : Bool
-    weak         var delegate        : CLDVideoControlsViewDelegate?
+    private var playPauseButton : UIButton!
+    private var visibilityTimer : CLDDisplayLinkObserver!
+    private var isPlaying       : Bool
+    private var isShown         : Bool
+    weak    var delegate        : CLDVideoControlsViewDelegate?
     
-    let transparentBackgroundColor = UIColor.black.withAlphaComponent(0.5)
+    private let transparentBackgroundColor = UIColor.black.withAlphaComponent(0.5)
     
     // MARK: - init
     init(frame: CGRect, delegate: CLDVideoControlsViewDelegate?) {
@@ -93,12 +93,12 @@ extension CLDVideoControlsView {
         }
     }
     
-    @objc func playPausePressed() {
+    @objc private func playPausePressed() {
         
         isPlaying ? changeToPauseState() : changeToPlayingState()
     }
     
-    func changeToPauseState() {
+    private func changeToPauseState() {
         
         delegate?.pausePressedOnVideoControls(self)
         playPauseButton.setTitle("▶", for: .normal)
@@ -106,7 +106,7 @@ extension CLDVideoControlsView {
         isPlaying = false
     }
     
-    func changeToPlayingState() {
+    private func changeToPlayingState() {
         
         delegate?.playPressedOnVideoControls(self)
         playPauseButton.setTitle("||", for: .normal)
@@ -136,7 +136,7 @@ extension CLDVideoControlsView: CLDDisplayLinkObserverDelegate {
 // MARK: - create UI
 extension CLDVideoControlsView {
     
-    func createUI() {
+    private func createUI() {
         
         backgroundColor = transparentBackgroundColor
         
