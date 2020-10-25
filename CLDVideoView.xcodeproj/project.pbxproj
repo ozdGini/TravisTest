@@ -19,6 +19,11 @@
 		D72D8337254059CB00C6D74C /* ScreenRecording.mov in Resources */ = {isa = PBXBuildFile; fileRef = D72D8335254059CB00C6D74C /* ScreenRecording.mov */; };
 		D72D8338254059CB00C6D74C /* ScreenRecording2.mov in Resources */ = {isa = PBXBuildFile; fileRef = D72D8336254059CB00C6D74C /* ScreenRecording2.mov */; };
 		D72D833A25405BE700C6D74C /* CLDDisplayLinkObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */; };
+		D780F4B6254588300008F65C /* CLDVideoControlsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780F4B5254588300008F65C /* CLDVideoControlsState.swift */; };
+		D780F4B82545885F0008F65C /* CLDVideoShownAndPlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780F4B72545885F0008F65C /* CLDVideoShownAndPlayingState.swift */; };
+		D780F4BA2545886C0008F65C /* CLDVideoShownAndPausedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780F4B92545886C0008F65C /* CLDVideoShownAndPausedState.swift */; };
+		D780F4BC254588790008F65C /* CLDVideoHiddenAndPlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780F4BB254588790008F65C /* CLDVideoHiddenAndPlayingState.swift */; };
+		D780F4BE254588850008F65C /* CLDVideoHiddenAndPausedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780F4BD254588850008F65C /* CLDVideoHiddenAndPausedState.swift */; };
 		D7FDF58F254072B400A43A29 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDF58E254072B400A43A29 /* ExtensionUIView.swift */; };
 		D7FDF59125407F3700A43A29 /* dog.mov in Resources */ = {isa = PBXBuildFile; fileRef = D7FDF59025407F3700A43A29 /* dog.mov */; };
 /* End PBXBuildFile section */
@@ -38,6 +43,11 @@
 		D72D8335254059CB00C6D74C /* ScreenRecording.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ScreenRecording.mov; sourceTree = "<group>"; };
 		D72D8336254059CB00C6D74C /* ScreenRecording2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ScreenRecording2.mov; sourceTree = "<group>"; };
 		D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLDDisplayLinkObserver.swift; sourceTree = "<group>"; };
+		D780F4B5254588300008F65C /* CLDVideoControlsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoControlsState.swift; sourceTree = "<group>"; };
+		D780F4B72545885F0008F65C /* CLDVideoShownAndPlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoShownAndPlayingState.swift; sourceTree = "<group>"; };
+		D780F4B92545886C0008F65C /* CLDVideoShownAndPausedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoShownAndPausedState.swift; sourceTree = "<group>"; };
+		D780F4BB254588790008F65C /* CLDVideoHiddenAndPlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoHiddenAndPlayingState.swift; sourceTree = "<group>"; };
+		D780F4BD254588850008F65C /* CLDVideoHiddenAndPausedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoHiddenAndPausedState.swift; sourceTree = "<group>"; };
 		D7FDF58E254072B400A43A29 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		D7FDF59025407F3700A43A29 /* dog.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = dog.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				D72D832C254034E200C6D74C /* CLDVideoView.swift */,
-				D72D832E2540360100C6D74C /* CLDVideoControlsView.swift */,
+				D780F4B4254587CE0008F65C /* VideoControls */,
 				D72D8330254038F400C6D74C /* CLDVideoPlayerView.swift */,
 				D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */,
 				D72D8335254059CB00C6D74C /* ScreenRecording.mov */,
@@ -97,6 +107,19 @@
 				D7FDF59025407F3700A43A29 /* dog.mov */,
 			);
 			path = VideoView;
+			sourceTree = "<group>";
+		};
+		D780F4B4254587CE0008F65C /* VideoControls */ = {
+			isa = PBXGroup;
+			children = (
+				D72D832E2540360100C6D74C /* CLDVideoControlsView.swift */,
+				D780F4B5254588300008F65C /* CLDVideoControlsState.swift */,
+				D780F4B72545885F0008F65C /* CLDVideoShownAndPlayingState.swift */,
+				D780F4B92545886C0008F65C /* CLDVideoShownAndPausedState.swift */,
+				D780F4BB254588790008F65C /* CLDVideoHiddenAndPlayingState.swift */,
+				D780F4BD254588850008F65C /* CLDVideoHiddenAndPausedState.swift */,
+			);
+			path = VideoControls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,13 +196,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D780F4BC254588790008F65C /* CLDVideoHiddenAndPlayingState.swift in Sources */,
+				D780F4B82545885F0008F65C /* CLDVideoShownAndPlayingState.swift in Sources */,
+				D780F4B6254588300008F65C /* CLDVideoControlsState.swift in Sources */,
 				D72D831D2540348800C6D74C /* ViewController.swift in Sources */,
+				D780F4BA2545886C0008F65C /* CLDVideoShownAndPausedState.swift in Sources */,
 				D72D83192540348800C6D74C /* AppDelegate.swift in Sources */,
 				D72D833A25405BE700C6D74C /* CLDDisplayLinkObserver.swift in Sources */,
 				D72D832F2540360100C6D74C /* CLDVideoControlsView.swift in Sources */,
 				D72D8331254038F400C6D74C /* CLDVideoPlayerView.swift in Sources */,
 				D72D832D254034E200C6D74C /* CLDVideoView.swift in Sources */,
 				D7FDF58F254072B400A43A29 /* ExtensionUIView.swift in Sources */,
+				D780F4BE254588850008F65C /* CLDVideoHiddenAndPausedState.swift in Sources */,
 				D72D831B2540348800C6D74C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
