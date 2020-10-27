@@ -6,13 +6,14 @@
 //  Copyright © 2020 Cloudinary. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class CLDVideoHiddenAndPlayingState: NSObject, CLDVideoControlsState {
     
     var controlsView: CLDVideoControlsView
     
     required init(controlsView: CLDVideoControlsView) {
+        
         self.controlsView = controlsView
         super.init()
     }
@@ -22,14 +23,13 @@ class CLDVideoHiddenAndPlayingState: NSObject, CLDVideoControlsState {
     }
     
     func backgroundPressed() {
+        
         print("CLDVideoHiddenAndPlayingState - backgroundPressed")
         
-        self.controlsView.setNewState(newState: self.controlsView.shownAndPlayingState)
-        self.controlsView.startTimer()
+        controlsView.setNewState(newState: controlsView.shownAndPlayingState)
+        controlsView.startTimer()
         
-        UIView.animate(withDuration: 0.2, animations: {
-            self.controlsView.showControls()
-        })
+        controlsView.showControls()
     }
     
     func timerFinished() {
@@ -38,16 +38,10 @@ class CLDVideoHiddenAndPlayingState: NSObject, CLDVideoControlsState {
     
     func videoEnded() {
         print("CLDVideoHiddenAndPlayingState - videoEnded")
-        controlsView.playPauseButton.setTitle("▶", for: .normal)
+        controlsView.pauseVideo()
         
-        UIView.animate(withDuration: 0.2, animations: {
-            
-            self.controlsView.showControls()
-            
-        }) { _ in
-            
-            self.controlsView.setNewState(newState: self.controlsView.shownAndPausedState)
-            self.controlsView.stopTimer()
-        }
+        controlsView.setNewState(newState: controlsView.shownAndPausedState)
+        
+        controlsView.showControls()
     }
 }

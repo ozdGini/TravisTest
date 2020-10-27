@@ -30,16 +30,9 @@ protocol CLDVideoControlsViewDelegate: class {
 }
 
 class CLDVideoControlsView: UIControl {
-    
-    enum controlState {
-        
-        case shownAndPlaying
-        case shownAndPaused
-        case hiddenAndPlaying
-        case hiddenAndPaused
-    }
-    
-            var playPauseButton  : UIButton!
+ 
+      
+    private var playPauseButton  : UIButton!
     private var visibilityTimer  : CLDDisplayLinkObserver!
     
     weak    var delegate         : CLDVideoControlsViewDelegate?
@@ -50,7 +43,9 @@ class CLDVideoControlsView: UIControl {
     private(set) var hiddenAndPlayingState: CLDVideoControlsState!
     private(set) var hiddenAndPausedState : CLDVideoControlsState!
     
-    let transparentBackgroundColor = UIColor.black.withAlphaComponent(0.5)
+    private let transparentBackgroundColor = UIColor.black.withAlphaComponent(0.5)
+    private let controlTransitionsDuration = 0.2
+    private let controlAppearanceDuration = 2.0
     
     // MARK: - init
     init(frame: CGRect, delegate: CLDVideoControlsViewDelegate?) {
@@ -60,12 +55,13 @@ class CLDVideoControlsView: UIControl {
         super.init(frame: frame)
         
         // handle state
-        self.shownAndPlayingState  = CLDVideoShownAndPlayingState (controlsView: self)
-        self.shownAndPausedState   = CLDVideoShownAndPausedState  (controlsView: self)
-        self.hiddenAndPlayingState = CLDVideoHiddenAndPlayingState(controlsView: self)
-        self.hiddenAndPausedState  = CLDVideoHiddenAndPausedState (controlsView: self)
-        self.currentState          = self.shownAndPlayingState
+        shownAndPlayingState  = CLDVideoShownAndPlayingState (controlsView: self)
+        shownAndPausedState   = CLDVideoShownAndPausedState  (controlsView: self)
+        hiddenAndPlayingState = CLDVideoHiddenAndPlayingState(controlsView: self)
+        hiddenAndPausedState  = CLDVideoHiddenAndPausedState (controlsView: self)
+        currentState          = shownAndPlayingState
         
+        // initial timer state
         visibilityTimer = CLDDisplayLinkObserver(delegate: self)
         startTimer()
         
@@ -80,16 +76,30 @@ class CLDVideoControlsView: UIControl {
 // MARK: - handle events
 extension CLDVideoControlsView {
     
-    func videoEnded() {
-        currentState.videoEnded()
-    }
-    
     @objc private func backgroundPressed() {
         currentState.backgroundPressed()
     }
     
     @objc private func playPausePressed() {
         currentState.playPausePressed()
+    }
+    
+    func videoEnded() {
+        currentState.videoEnded()
+    }
+    
+    func pauseVideo() {
+        
+        delegate?.pausePressedOnVideoControls(self)
+        playPauseButton.setTitle("▶", for: .normal)
+        stopTimer()
+    }
+    
+    func playVideo() {
+        
+        delegate?.playPressedOnVideoControls(self)
+        playPauseButton.setTitle("||", for: .normal)
+        startTimer()
     }
 }
 
@@ -106,7 +116,7 @@ extension CLDVideoControlsView: CLDDisplayLinkObserverDelegate {
     
     func startTimer() {
         visibilityTimer.stopTicker()
-        visibilityTimer.delayValue = 2
+        visibilityTimer.delayValue = controlAppearanceDuration
         visibilityTimer.startTicker()
     }
     
@@ -136,14 +146,20 @@ extension CLDVideoControlsView {
     
     func showControls() {
         
-        self.backgroundColor       = self.transparentBackgroundColor
-        self.playPauseButton.alpha = 1.0
+        UIView.animate(withDuration: controlTransitionsDuration, animations: {
+            
+            self.backgroundColor       = self.transparentBackgroundColor
+            self.playPauseButton.alpha = 1.0
+        })
     }
     
     func hideControls() {
         
         // we dont set the background alphe to 0 in order to keep getting touch events
-        self.backgroundColor       = UIColor.clear
-        self.playPauseButton.alpha = 0.0
+        UIView.animate(withDuration: controlTransitionsDuration, animations: {
+            
+            self.backgroundColor       = UIColor.clear
+            self.playPauseButton.alpha = 0.0
+        })
     }
 }

@@ -86,6 +86,9 @@
 				D72D831A2540348800C6D74C /* SceneDelegate.swift */,
 				D7FDF58E254072B400A43A29 /* ExtensionUIView.swift */,
 				D72D831C2540348800C6D74C /* ViewController.swift */,
+				D72D8335254059CB00C6D74C /* ScreenRecording.mov */,
+				D72D8336254059CB00C6D74C /* ScreenRecording2.mov */,
+				D7FDF59025407F3700A43A29 /* dog.mov */,
 				D72D8332254038FA00C6D74C /* VideoView */,
 				D72D831E2540348800C6D74C /* Main.storyboard */,
 				D72D83212540348900C6D74C /* Assets.xcassets */,
@@ -98,13 +101,9 @@
 		D72D8332254038FA00C6D74C /* VideoView */ = {
 			isa = PBXGroup;
 			children = (
-				D72D832C254034E200C6D74C /* CLDVideoView.swift */,
 				D780F4B4254587CE0008F65C /* VideoControls */,
+				D72D832C254034E200C6D74C /* CLDVideoView.swift */,
 				D72D8330254038F400C6D74C /* CLDVideoPlayerView.swift */,
-				D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */,
-				D72D8335254059CB00C6D74C /* ScreenRecording.mov */,
-				D72D8336254059CB00C6D74C /* ScreenRecording2.mov */,
-				D7FDF59025407F3700A43A29 /* dog.mov */,
 			);
 			path = VideoView;
 			sourceTree = "<group>";
@@ -118,6 +117,7 @@
 				D780F4B92545886C0008F65C /* CLDVideoShownAndPausedState.swift */,
 				D780F4BB254588790008F65C /* CLDVideoHiddenAndPlayingState.swift */,
 				D780F4BD254588850008F65C /* CLDVideoHiddenAndPausedState.swift */,
+				D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */,
 			);
 			path = VideoControls;
 			sourceTree = "<group>";

@@ -6,21 +6,22 @@
 //  Copyright © 2020 Cloudinary. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class CLDVideoShownAndPlayingState: NSObject, CLDVideoControlsState {
+    
     var controlsView: CLDVideoControlsView
     
     required init(controlsView: CLDVideoControlsView) {
+        
         self.controlsView = controlsView
         super.init()
     }
     
     func playPausePressed() {
+        
         print("CLDVideoShownAndPlayingState - playPausePressed")
-        controlsView.delegate?.pausePressedOnVideoControls(controlsView)
-        controlsView.playPauseButton.setTitle("▶", for: .normal)
-        controlsView.stopTimer()
+        controlsView.pauseVideo()
         controlsView.setNewState(newState: controlsView.shownAndPausedState)
     }
     
@@ -34,21 +35,19 @@ class CLDVideoShownAndPlayingState: NSObject, CLDVideoControlsState {
         hideControls()
     }
     
-    func hideControls() {
+    private func hideControls() {
 
-        self.controlsView.stopTimer()
-        self.controlsView.setNewState(newState: self.controlsView.hiddenAndPlayingState)
+        controlsView.stopTimer()
+        controlsView.setNewState(newState: controlsView.hiddenAndPlayingState)
         
-        UIView.animate(withDuration: 0.2, animations: {
-            self.controlsView.hideControls()
-        })
+        controlsView.hideControls()
     }
     
     func videoEnded() {
-        print("CLDVideoShownAndPlayingState - videoEnded")
-        controlsView.playPauseButton.setTitle("▶", for: .normal)
-        controlsView.stopTimer()
         
-        controlsView.setNewState(newState: self.controlsView.shownAndPausedState)
+        print("CLDVideoShownAndPlayingState - videoEnded")
+        controlsView.pauseVideo()
+        
+        controlsView.setNewState(newState: controlsView.shownAndPausedState)
     }
 }

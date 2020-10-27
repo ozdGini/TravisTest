@@ -6,33 +6,33 @@
 //  Copyright © 2020 Cloudinary. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class CLDVideoShownAndPausedState: NSObject, CLDVideoControlsState {
     
     var controlsView: CLDVideoControlsView
     
     required init(controlsView: CLDVideoControlsView) {
+        
         self.controlsView = controlsView
         super.init()
     }
     
     func playPausePressed() {
+        
         print("CLDVideoShownAndPausedState - playPausePressed")
-        controlsView.delegate?.playPressedOnVideoControls(controlsView)
-        controlsView.playPauseButton.setTitle("||", for: .normal)
-        controlsView.startTimer()
+        controlsView.playVideo()
+        
         controlsView.setNewState(newState: controlsView.shownAndPlayingState)
     }
     
     func backgroundPressed() {
+        
         print("CLDVideoShownAndPausedState - backgroundPressed")
         
-        self.controlsView.setNewState(newState: self.controlsView.hiddenAndPausedState)
+        controlsView.setNewState(newState: controlsView.hiddenAndPausedState)
         
-        UIView.animate(withDuration: 0.2, animations: {
-            self.controlsView.hideControls()
-        })
+        controlsView.hideControls()
     }
     
     func timerFinished() {
