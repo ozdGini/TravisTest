@@ -18,7 +18,6 @@
 		D72D8331254038F400C6D74C /* CLDVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D8330254038F400C6D74C /* CLDVideoPlayerView.swift */; };
 		D72D8338254059CB00C6D74C /* ScreenRecording2.mov in Resources */ = {isa = PBXBuildFile; fileRef = D72D8336254059CB00C6D74C /* ScreenRecording2.mov */; };
 		D72D833A25405BE700C6D74C /* CLDDisplayLinkObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */; };
-		D73ACEA425531102007A8996 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = D73ACEA325531102007A8996 /* .travis.yml */; };
 		D780F4B6254588300008F65C /* CLDVideoControlsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780F4B5254588300008F65C /* CLDVideoControlsState.swift */; };
 		D780F4B82545885F0008F65C /* CLDVideoShownAndPlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780F4B72545885F0008F65C /* CLDVideoShownAndPlayingState.swift */; };
 		D780F4BA2545886C0008F65C /* CLDVideoShownAndPausedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780F4B92545886C0008F65C /* CLDVideoShownAndPausedState.swift */; };
@@ -42,7 +41,6 @@
 		D72D8330254038F400C6D74C /* CLDVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoPlayerView.swift; sourceTree = "<group>"; };
 		D72D8336254059CB00C6D74C /* ScreenRecording2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ScreenRecording2.mov; sourceTree = "<group>"; };
 		D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLDDisplayLinkObserver.swift; sourceTree = "<group>"; };
-		D73ACEA325531102007A8996 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		D780F4B5254588300008F65C /* CLDVideoControlsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoControlsState.swift; sourceTree = "<group>"; };
 		D780F4B72545885F0008F65C /* CLDVideoShownAndPlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoShownAndPlayingState.swift; sourceTree = "<group>"; };
 		D780F4B92545886C0008F65C /* CLDVideoShownAndPausedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoShownAndPausedState.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				D72D831E2540348800C6D74C /* Main.storyboard */,
 				D72D83212540348900C6D74C /* Assets.xcassets */,
 				D72D83232540348900C6D74C /* LaunchScreen.storyboard */,
-				D73ACEA325531102007A8996 /* .travis.yml */,
 				D72D83262540348900C6D74C /* Info.plist */,
 			);
 			path = CLDVideoView;
@@ -180,7 +177,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D73ACEA425531102007A8996 /* .travis.yml in Resources */,
 				D72D83252540348900C6D74C /* LaunchScreen.storyboard in Resources */,
 				D72D83222540348900C6D74C /* Assets.xcassets in Resources */,
 				D7FDF59125407F3700A43A29 /* dog.mov in Resources */,
