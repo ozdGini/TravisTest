@@ -18,6 +18,8 @@
 		D72D8331254038F400C6D74C /* CLDVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D8330254038F400C6D74C /* CLDVideoPlayerView.swift */; };
 		D72D8338254059CB00C6D74C /* ScreenRecording2.mov in Resources */ = {isa = PBXBuildFile; fileRef = D72D8336254059CB00C6D74C /* ScreenRecording2.mov */; };
 		D72D833A25405BE700C6D74C /* CLDDisplayLinkObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */; };
+		D73ACEAE25531D84007A8996 /* CLDVideoViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73ACEAD25531D84007A8996 /* CLDVideoViewTests.swift */; };
+		D73ACEB525531D8A007A8996 /* TestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73ACEA525531D62007A8996 /* TestClass.swift */; };
 		D780F4B6254588300008F65C /* CLDVideoControlsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780F4B5254588300008F65C /* CLDVideoControlsState.swift */; };
 		D780F4B82545885F0008F65C /* CLDVideoShownAndPlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780F4B72545885F0008F65C /* CLDVideoShownAndPlayingState.swift */; };
 		D780F4BA2545886C0008F65C /* CLDVideoShownAndPausedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780F4B92545886C0008F65C /* CLDVideoShownAndPausedState.swift */; };
@@ -26,6 +28,16 @@
 		D7FDF58F254072B400A43A29 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDF58E254072B400A43A29 /* ExtensionUIView.swift */; };
 		D7FDF59125407F3700A43A29 /* dog.mov in Resources */ = {isa = PBXBuildFile; fileRef = D7FDF59025407F3700A43A29 /* dog.mov */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D73ACEB025531D84007A8996 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D72D830D2540348800C6D74C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D72D83142540348800C6D74C;
+			remoteInfo = CLDVideoView;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D72D83152540348800C6D74C /* CLDVideoView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLDVideoView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +53,10 @@
 		D72D8330254038F400C6D74C /* CLDVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoPlayerView.swift; sourceTree = "<group>"; };
 		D72D8336254059CB00C6D74C /* ScreenRecording2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ScreenRecording2.mov; sourceTree = "<group>"; };
 		D72D833925405BE700C6D74C /* CLDDisplayLinkObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLDDisplayLinkObserver.swift; sourceTree = "<group>"; };
+		D73ACEA525531D62007A8996 /* TestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClass.swift; sourceTree = "<group>"; };
+		D73ACEAB25531D84007A8996 /* CLDVideoViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CLDVideoViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D73ACEAD25531D84007A8996 /* CLDVideoViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoViewTests.swift; sourceTree = "<group>"; };
+		D73ACEAF25531D84007A8996 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D780F4B5254588300008F65C /* CLDVideoControlsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoControlsState.swift; sourceTree = "<group>"; };
 		D780F4B72545885F0008F65C /* CLDVideoShownAndPlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoShownAndPlayingState.swift; sourceTree = "<group>"; };
 		D780F4B92545886C0008F65C /* CLDVideoShownAndPausedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDVideoShownAndPausedState.swift; sourceTree = "<group>"; };
@@ -58,6 +74,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D73ACEA825531D84007A8996 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				D72D83172540348800C6D74C /* CLDVideoView */,
+				D73ACEAC25531D84007A8996 /* CLDVideoViewTests */,
 				D72D83162540348800C6D74C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				D72D83152540348800C6D74C /* CLDVideoView.app */,
+				D73ACEAB25531D84007A8996 /* CLDVideoViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +111,7 @@
 				D72D831C2540348800C6D74C /* ViewController.swift */,
 				D72D8336254059CB00C6D74C /* ScreenRecording2.mov */,
 				D7FDF59025407F3700A43A29 /* dog.mov */,
+				D73ACEA525531D62007A8996 /* TestClass.swift */,
 				D72D8332254038FA00C6D74C /* VideoView */,
 				D72D831E2540348800C6D74C /* Main.storyboard */,
 				D72D83212540348900C6D74C /* Assets.xcassets */,
@@ -103,6 +129,15 @@
 				D72D8330254038F400C6D74C /* CLDVideoPlayerView.swift */,
 			);
 			path = VideoView;
+			sourceTree = "<group>";
+		};
+		D73ACEAC25531D84007A8996 /* CLDVideoViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				D73ACEAD25531D84007A8996 /* CLDVideoViewTests.swift */,
+				D73ACEAF25531D84007A8996 /* Info.plist */,
+			);
+			path = CLDVideoViewTests;
 			sourceTree = "<group>";
 		};
 		D780F4B4254587CE0008F65C /* VideoControls */ = {
@@ -139,18 +174,40 @@
 			productReference = D72D83152540348800C6D74C /* CLDVideoView.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D73ACEAA25531D84007A8996 /* CLDVideoViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D73ACEB225531D84007A8996 /* Build configuration list for PBXNativeTarget "CLDVideoViewTests" */;
+			buildPhases = (
+				D73ACEA725531D84007A8996 /* Sources */,
+				D73ACEA825531D84007A8996 /* Frameworks */,
+				D73ACEA925531D84007A8996 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D73ACEB125531D84007A8996 /* PBXTargetDependency */,
+			);
+			name = CLDVideoViewTests;
+			productName = CLDVideoViewTests;
+			productReference = D73ACEAB25531D84007A8996 /* CLDVideoViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D72D830D2540348800C6D74C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1170;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = Cloudinary;
 				TargetAttributes = {
 					D72D83142540348800C6D74C = {
 						CreatedOnToolsVersion = 11.5;
+					};
+					D73ACEAA25531D84007A8996 = {
+						CreatedOnToolsVersion = 11.7;
+						TestTargetID = D72D83142540348800C6D74C;
 					};
 				};
 			};
@@ -168,6 +225,7 @@
 			projectRoot = "";
 			targets = (
 				D72D83142540348800C6D74C /* CLDVideoView */,
+				D73ACEAA25531D84007A8996 /* CLDVideoViewTests */,
 			);
 		};
 /* End PBXProject section */
@@ -182,6 +240,13 @@
 				D7FDF59125407F3700A43A29 /* dog.mov in Resources */,
 				D72D8338254059CB00C6D74C /* ScreenRecording2.mov in Resources */,
 				D72D83202540348800C6D74C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D73ACEA925531D84007A8996 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +273,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D73ACEA725531D84007A8996 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D73ACEB525531D8A007A8996 /* TestClass.swift in Sources */,
+				D73ACEAE25531D84007A8996 /* CLDVideoViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D73ACEB125531D84007A8996 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D72D83142540348800C6D74C /* CLDVideoView */;
+			targetProxy = D73ACEB025531D84007A8996 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D72D831E2540348800C6D74C /* Main.storyboard */ = {
@@ -380,6 +462,48 @@
 			};
 			name = Release;
 		};
+		D73ACEB325531D84007A8996 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69UZJ87W84;
+				INFOPLIST_FILE = CLDVideoViewTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.demo.CLDVideoViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CLDVideoView.app/CLDVideoView";
+			};
+			name = Debug;
+		};
+		D73ACEB425531D84007A8996 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69UZJ87W84;
+				INFOPLIST_FILE = CLDVideoViewTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.demo.CLDVideoViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CLDVideoView.app/CLDVideoView";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -397,6 +521,15 @@
 			buildConfigurations = (
 				D72D832A2540348900C6D74C /* Debug */,
 				D72D832B2540348900C6D74C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D73ACEB225531D84007A8996 /* Build configuration list for PBXNativeTarget "CLDVideoViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D73ACEB325531D84007A8996 /* Debug */,
+				D73ACEB425531D84007A8996 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
